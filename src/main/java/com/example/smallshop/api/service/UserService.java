@@ -13,8 +13,6 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-
-
     public String login(String username,String password){
         User user = userDao.findUserByName(username);
         if (user == null) {
