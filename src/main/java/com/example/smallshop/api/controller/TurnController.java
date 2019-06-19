@@ -89,14 +89,16 @@ public class TurnController {
 
 
     @RequestMapping("/editok")
-    public String editok(String id,String name, String password) throws IOException {
+    public String editok(String id,String name, String password,ModelMap modelMap) throws IOException {
         userService.updateUser(Integer.valueOf(id), name, password);
+        List<User> userList = userService.getUsers();
+        modelMap.put("users",userList);
         return "manage";
     }
 
     @RequestMapping("/add")
     public String add(String name, String password, HttpServletResponse response,ModelMap modelMap){
-      //  userService.creatUser(name,password);
+
         return "add";
     }
 
